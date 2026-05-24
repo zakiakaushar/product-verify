@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Verification</title>
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:40px;
+}
+.container{
+max-width:500px;
+margin:auto;
+background:#1b1b1b;
+padding:25px;
+border-radius:12px;
+}
+input{
+padding:12px;
+width:80%;
+font-size:18px;
+}
+button{
+padding:12px 25px;
+background:gold;
+border:none;
+font-size:18px;
+margin-top:10px;
+cursor:pointer;
+}
+.success{
+color:#00ff66;
+font-size:22px;
+margin-top:20px;
+}
+.error{
+color:red;
+font-size:20px;
+}
+img{
+width:200px;
+margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>PRODUCT VERIFICATION</h1>
+
+<p>Enter your security code:</p>
+
+<input id="code" placeholder="ABC123">
+
+<br>
+
+<button onclick="verifyCode()">VERIFY</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const products = {
+"ABC123":{
+name:"INTRA BLAST E2",
+image:"product.jpg"
+}
+};
+
+function verifyCode(){
+
+let code=document.getElementById("code").value;
+
+let result=document.getElementById("result");
+
+if(products[code]){
+
+result.innerHTML=`
+<div class="success">
+✅ Product Verified Successfully
+</div>
+
+<img src="${products[code].image}">
+
+<h2>${products[code].name}</h2>
+
+<p>Thank you for checking authenticity.</p>
+`;
+
+}else{
+
+result.innerHTML=`
+<div class="error">
+❌ Invalid Code
+</div>
+`;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
